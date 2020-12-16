@@ -1,5 +1,5 @@
 #Simple config push script for writing configs to Cisco IOS Devices
-#Part of ISETools by @RockstarWiFi - WiFiTraining.com
+#Part of ISETools by @RockstarWiFi - WiFiTraining.com / ActiveExpert.com
 #Requires text file 'devices' with list of IPv4 addresses you want to push code to, 1 per line, no spaces. 
 #Requires 'commands' text file with list of commands, no confg t needed, 1 command per line, no spaces.
 
