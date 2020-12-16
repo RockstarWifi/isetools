@@ -1,0 +1,45 @@
+!\\ Template created for reference by students of Cisco ISE v3 Lessons - Wired, by @RockstarWiFi
+!\\ Availible at https://store.wifitraining.com
+!\\ Complete an ISE TACACS+ Policy before applying this config
+!
+!\\ Local SOS Account
+username [sos_user] priv 15 secret [sos_password]
+!
+!
+! \\ TACACS+ Server Group Configuration
+tacacs-server directed-request
+tacacs server [TACACS_PSN_NAME1]
+ address ipv4 [TACACS_PSN_IP]
+ key 7 [TACACS_SHARED_KEY]
+ timeout 5
+tacacs server [TACACS_PSN_NAME2]
+ address ipv4 [TACACS_PSN_IP]
+ key 7 [TACACS_SHARED_KEY]
+ timeout 5
+!
+ aaa group server tacacs+ ISET
+ server name [TACACS_PSN_NAME1]
+ server name [TACACS_PSN_NAME2]
+!
+! \\ NOTE - using the default group here for simplicty, could use ISET instead of default
+aaa authentication login default group tacacs+ enable
+aaa authentication enable default group tacacs+ enable
+aaa authorization exec default local group tacacs+ if-authenticated
+aaa authorization commands 1 default group tacacs+ if-authenticated 
+aaa authorization commands 15 default group tacacs+ if-authenticated 
+!
+!
+!
+line vty 0 15
+ authorization commands 0 default
+ authorization commands 1 default
+ authorization commands 15 default
+ authorization exec default
+ login authentication default
+ logging synchronous
+ transport input ssh
+!
+! \\ Test your configuration before applying this guy, this forces console to use 
+! \\ tacacs as well which is what you want, when things are verified.
+! \\ Use test aaa group tacacs+ admin Cisco123 to verify authentication succesful. 
+aaa authorization console
