@@ -5,7 +5,7 @@
 
 from netmiko import ConnectHandler
 
-with open('commands') as f:
+with open('commands.ios') as f:
     commands_list = f.read().splitlines()
 
 with open('devices') as f:
