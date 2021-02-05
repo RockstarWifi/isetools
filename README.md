@@ -8,4 +8,15 @@ To use this script you must have the following installed
 Python 3.6+
 Netmiko
 
-Download the 
+Download the isetools files using git or copy paste the text to your local machine. 
+
+There are 3 files required to make the script work, and keep it SUPER SIMPLE. 
+devices - list of IP addresses you want to push a configuration to, paste 1 IP per line.
+commands.ios - text file with list of IOS or IOS-XE commands to deploy to the devicves in the devices file
+ISETools-push.py - Script which makes the magic work, whichever commands used in commands.ios will be entered in each device, just as if you were sitting at the terminal. 
+
+If you want to save the config to the device with the same script, use write mem at the end of your config in commands.ios (text file). 
+
+NOTE - If you are NEW to Python, DO NOT MODIFY the script, even changing the spacing or tabs can break it with python's nested configs. 
+
+It's best to test this with 1 devices, then you can replicate to as many devices as you like. This script is not efficient if you have hundreds to do quickly. 
