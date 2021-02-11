@@ -11,12 +11,11 @@ with open('commands.ios') as f:
 with open('devices') as f:
     devices_list = f.read().splitlines()
 
-for devices in devices_list:
-    print ('Connecting to device" ' + devices)
-    ip_address_of_device = devices
+for ip_address in devices_list:
+    print ('Connecting to device" ' + ip_address)
     ios_device = {
         'device_type': 'cisco_ios',
-        'ip': ip_address_of_device,
+        'ip': ip_address,
         'username': 'chris',
         'password': 'Cisco123'
     }
