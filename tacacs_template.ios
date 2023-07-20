@@ -21,7 +21,7 @@ tacacs server [TACACS_PSN_NAME2]
  server name [TACACS_PSN_NAME1]
  server name [TACACS_PSN_NAME2]
 !
-! \\ NOTE - using the default group here for simplicty, could use ISET instead of default
+! \\ NOTE - using the default group here for simplicty, could use ISET instead of default. Also DNAC has a bug requiring devices use the default AAA group when importing. 
 aaa authentication login default group tacacs+ enable
 aaa authentication enable default group tacacs+ enable
 aaa authorization exec default local group tacacs+ if-authenticated
